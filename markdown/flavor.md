@@ -32,6 +32,7 @@ This decision is made to be backwards compatible with markdown renderer on githu
 
 To introduce documentation user to a step-by-step guide, Glagolica supports adding step notation:
 
+<!-- prettier-ignore-start -->
 ```md
 <steps>
   <step>
@@ -39,7 +40,6 @@ To introduce documentation user to a step-by-step guide, Glagolica supports addi
     It involves certain actions:
 
     ![Do as stated in this image](/dummy.png)
-
   </step>
   <step>
     ### This is the second step
@@ -54,6 +54,7 @@ To introduce documentation user to a step-by-step guide, Glagolica supports addi
   </step>
 </steps>
 ```
+<!-- prettier-ignore-end -->
 
 ### TOC
 
@@ -66,12 +67,81 @@ To render Table of Contents, developers do not need to add links in the nested l
 
 ### Code Blocks
 
-// TODO
+Code blocks are defined using the same exact syntax documented by CommonMark:
+
+````
+```
+print("Code here")
+```
+````
 
 #### Tabs
 
-// TODO
+To make your code blocks grouped by tabs, use `tabs` element:
+
+<!-- prettier-ignore-start -->
+````md
+<tabs names="JavaScript, Python, Rust">
+  ```js
+  console.log("Hello, World!");
+  ```
+
+  ```py
+  print("Hello, World!")
+  ```
+
+  ```rs
+  fn main() {
+    println!("Hello, World!");
+  }
+  ```
+</tabs>
+````
+<!-- prettier-ignore-end -->
 
 #### Highlighting
 
-// TODO
+For code block highlighting, we provide extended syntax with parameters syntax similar to html/xml:
+
+````md
+```go highlight="3, 5-7"
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Hello, World!")
+}
+```
+````
+
+The code above highlights lines 3, 5, 6 & 7.
+
+#### Diffs
+
+We're using the same format documented for highlighting to represent code diffs:
+
+````md
+```gleam plusdiff="5" minusdiff="4"
+import gleam/io
+
+pub fn main() {
+  io.println("Hello, Joe!");
+  io.println("Hello, Joe!")
+}
+```
+````
+
+#### Line Numbers
+
+To add line numeration provide `linenumbers` attribute to the code block:
+
+````md
+```kt linenumbers
+fun main() {
+  println("Hello, World!")
+}
+```
+````
+
+Now it will prepend numbers to the left side of the code block.
