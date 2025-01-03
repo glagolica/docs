@@ -9,7 +9,7 @@ We use TOML for our configuration, see [Config Lookup](./lookup.md) for more inf
 
 ### `default_lang`
 
-Default language for your documentation is `en`,
+Default language for your documentation is `"en"`,
 but you're free to modify the value based on [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes):
 
 ```toml
@@ -40,11 +40,20 @@ Following variables represent some values:
 - `%name` - Name of the page AKA `title` value for frontmatter.
 - `%title` - Title of the documentation, see above.
 
-Default value is `%name | %title`.
+Default value is `"%name | %title"`.
 
 ```toml
 [site]
 title_template = "%name -.- %title"
 ```
 
-// TODO
+### `home_page`
+
+Path to your markdown file representing home/landing page relative to config file.
+
+Defaults value is `"./README.md"`.
+
+```toml
+[site]
+home_page = "./src/docs/main.md"
+```
