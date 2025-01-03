@@ -12,7 +12,7 @@ No matter the case of the file path, it will be converted to kebab-case:
 /src/nativeMain/kotlin/App.md      -->  GET /src/native-main/kotlin/app
 /src/main.md                       -->  GET /src/main
 /tests/Cases/Feature/LoginTest.md  -->  GET /tests/cases/feature/login-test
-/my_project/__init__.md            -->  GET /my_project/init
+/my_project/__init__.md            -->  GET /my-project/init
 ```
 
 ...and so on.
