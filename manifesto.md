@@ -45,7 +45,7 @@ below I listed few of the details regarding convention.
 
 ## Linting
 
-For Rust projects, we use [following linter rules](https://github.com/ferrumc-rs/ferrumc/blob/1df4866ba20b9e6a3ebad7ff0b026f1b969ebd14/Cargo.toml#L39).
+For Rust projects, we use [following linter rules](https://github.com/glagolica/glagolica/blob/9de0b655413b33caf11ba56ce66c04115d8be7ee/Cargo.toml#L5-L24).
 
 For TypeScript projects, we use ESLint v8 + [@vercel/style-guide](https://github.com/vercel/style-guide) with corresponding exports.
 Once style-guide is updated to support ESLint v9 we will update the ESLint version as well, else we will switch to better ESLint config.
