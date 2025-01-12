@@ -5,7 +5,9 @@ therefore it does not provide programmatic way of setting certain configuration 
 
 We use TOML for our configuration, see [Config Lookup](./lookup.md) for more information regarding where to store config.
 
-## `[site]`
+## `[interface]`
+
+This section documents overall looks of documentation.
 
 ### `default_lang`
 
@@ -13,7 +15,7 @@ Default language for your documentation is `"en"`,
 but you're free to modify the value based on [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes):
 
 ```toml
-[site]
+[interface]
 default_lang = "en-US"
 ```
 
@@ -27,7 +29,7 @@ When serving web version of your documentation,
 Glagolica will use this value in site's title based on `title_template`.
 
 ```toml
-[site]
+[interface]
 title = "This Documentation"
 ```
 
@@ -43,7 +45,7 @@ Following variables represent some values:
 Default value is `"%name | %title"`.
 
 ```toml
-[site]
+[interface]
 title_template = "%name -.- %title"
 ```
 
@@ -54,9 +56,31 @@ Path to your markdown file representing home/landing page relative to config fil
 Defaults value is `"./README.md"`.
 
 ```toml
-[site]
+[interface]
 home_page = "./src/docs/main.md"
 ```
+
+## `[references]`
+
+For smaller projects with single repository or the ones that use monorepository, this option is useless.
+
+But for cases when you need to generate reference documentation of comments from different repositories for single monolithic documentation,
+you can define list of git repositories to fetch when serving documentation:
+
+```toml
+[references]
+markdown-ast = { git = "https://github.com/glagolica/markdown.git" }
+
+# You can change branch
+frontend = { git = "https://github.com/glagolica/frontend.git", branch = "next" }
+
+# You can separate references in monorepo with path
+server = { git = "https://github.com/glagolica/glagolica.git", path = "./server" }
+cli = { git = "https://github.com/glagolica/glagolica.git", path = "./glag" }
+```
+
+> [!NOTE]
+> Name of the repository e.g. `markdown-ast`, `frontend`, `server`, `cli` will be used as part of links: `/en-US/reference/markdown-ast`, `/reference/frontend` etc.
 
 ## `[header]`
 
